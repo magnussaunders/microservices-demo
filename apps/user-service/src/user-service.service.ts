@@ -1,8 +1,10 @@
 import { Injectable } from '@nestjs/common';
+import {User} from "./interfaces/user.interface";
 
 @Injectable()
 export class UserServiceService {
-  getHello(): string {
-    return 'user-service';
+  createUser(data: User) {
+    data.id = 'new'
+    return data
   }
 }
