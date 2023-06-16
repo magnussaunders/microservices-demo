@@ -8,7 +8,7 @@ async function bootstrap() {
       {
         transport: Transport.RMQ,
         options: {
-          urls: ['amqp://microservices-demo-user:microservices-demo-pass@172.17.0.2:5672/microservices-demo'],
+          urls: ['amqp://guest:guest@rabbit-mq:5672'],
           queue: 'user-queue',
             noAck: false,
           queueOptions: {

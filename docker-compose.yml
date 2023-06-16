@@ -2,7 +2,7 @@ version: '3.8'
 services:
   api-service:
     container_name: api-service
-    network_mode: bridge
+#    network_mode: bridge
     build:
       context: .
       dockerfile: apps/api-service/Dockerfile
@@ -11,13 +11,24 @@ services:
 
   user-service:
     container_name: user-service
-    network_mode: bridge
+#    network_mode: bridge
     build:
       context: .
       dockerfile: apps/user-service/Dockerfile
     ports:
       - 3002:3000
 
-networks:
-  microservices-demo-network:
-    external: true
+  rabbit-mq:
+    container_name: rabbit-mq
+#    network_mode: bridge
+    image: rabbitmq:management
+    environment:
+      - RABBITMQ_DEFAULT_USER=guest
+      - RABBITMQ_DEFAULT_PASS=guest
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+
+#networks:
+#  microservices-demo-network:
+#    external: true
